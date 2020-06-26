@@ -103,7 +103,7 @@ public class S3Sample {
                         "(size = " + objectSummary.getSize() + ")");
             }
             System.out.println();
-            System.exit(0);
+
             /*
              * Upload an object to your bucket - You can easily upload a file to
              * S3, or upload directly an InputStream if you know the length of
@@ -142,7 +142,7 @@ public class S3Sample {
              */
             objectListing = s3.listObjects(new ListObjectsRequest()
                     .withBucketName(bucketName)
-                    .withPrefix("My"));
+                    );
             for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
                 System.out.println(" - " + objectSummary.getKey() + "  " +
                         "(size = " + objectSummary.getSize() + ")");
