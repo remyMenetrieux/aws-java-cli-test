@@ -42,7 +42,10 @@ is run it.
 
 Maven:
 
-    mvn clean compile exec:java
+    mvn clean compile exec:java "<s3name>"
+or : 
+    mvn clean package  
+    java -jar target/aws-java-sample-1.0-jar-with-dependencies.jar "<s3name">
 
 Gradle:
 

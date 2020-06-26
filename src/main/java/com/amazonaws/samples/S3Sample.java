@@ -63,7 +63,11 @@ public class S3Sample {
          */
 
         AmazonS3 s3 = new AmazonS3Client();
+
         Region usWest2 = Region.getRegion(Regions.EU_WEST_3);
+        if (args.length > 1)
+            usWest2 = Region.getRegion(Regions.fromName(args[1]));
+
         s3.setRegion(usWest2);
 
         String bucketName = args[0];
