@@ -94,6 +94,16 @@ public class S3Sample {
             }
             System.out.println();
   */
+            System.out.println("Listing objects");
+            ObjectListing objectListing = s3.listObjects(new ListObjectsRequest()
+                    .withBucketName(bucketName)
+                    );
+            for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
+                System.out.println(" - " + objectSummary.getKey() + "  " +
+                        "(size = " + objectSummary.getSize() + ")");
+            }
+            System.out.println();
+            System.exit(0);
             /*
              * Upload an object to your bucket - You can easily upload a file to
              * S3, or upload directly an InputStream if you know the length of
@@ -130,8 +140,7 @@ public class S3Sample {
              * use the AmazonS3.listNextBatchOfObjects(...) operation to retrieve
              * additional results.
              */
-            System.out.println("Listing objects");
-            ObjectListing objectListing = s3.listObjects(new ListObjectsRequest()
+            objectListing = s3.listObjects(new ListObjectsRequest()
                     .withBucketName(bucketName)
                     .withPrefix("My"));
             for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
